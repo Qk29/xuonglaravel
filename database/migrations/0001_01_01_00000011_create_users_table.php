@@ -19,6 +19,12 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('phone')->nullable();
+            $table->text('address')->nullable();
+            $table->unsignedBigInteger('role_id');
+            $table->enum('status',['active','inactive'])->default('active');
+            // Khóa ngoại
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
