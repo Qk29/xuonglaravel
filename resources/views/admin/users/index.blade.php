@@ -4,7 +4,11 @@
     Product-List
 @endsection
 @push('styles')
-    
+    <style>
+        a{
+            color: white;
+        }
+    </style>
 @endpush
 
 

@@ -6,7 +6,7 @@
 @push('styles')
     <style>
         a{
-            color: red;
+            color: white;
         }
     </style>
 @endpush

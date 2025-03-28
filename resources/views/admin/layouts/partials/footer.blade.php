@@ -1,12 +1,7 @@
-<footer class="footer mt-auto py-3 bg-light border-top">
-    <div class="container-fluid px-4">
-        <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; ShopComputer 2024</div>
-            <div>
-                <a href="#" class="text-decoration-none">Chính sách bảo mật</a>
-                &middot;
-                <a href="#" class="text-decoration-none">Điều khoản &amp; Điều kiện</a>
-            </div>
+<footer class="footer">
+    <div class="row">
+        <div class="col-md-12 footer-copyright text-center">
+            <p class="mb-0">Copyright 2022 © Fastkart theme by pixelstrap</p>
         </div>
     </div>
-</footer> 
+</footer>

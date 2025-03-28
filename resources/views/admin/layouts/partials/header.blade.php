@@ -1,28 +1,28 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-    <div class="container-fluid px-4">
-        <h3 class="navbar-brand mb-0">Trang quản trị</h3>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex ms-auto">
-                <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit">  
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
-            </form>
-            <ul class="navbar-nav ms-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Thông báo">
-                        <i class="bi bi-bell fs-5"></i>
-                        <span class="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger">
-                            3
-                        </span>
-                    </a>
-                </li>
-            </ul>
+<div class="page-header">
+    <div class="header-wrapper m-0">
+        <div class="header-logo-wrapper p-0">
+            <div class="logo-wrapper">
+                <a href="#">
+                    <img class="img-fluid main-logo" src="{{ asset('admin/assets/images/logo/1.png') }}" alt="logo">
+                    <img class="img-fluid white-logo" src="{{ asset('admin/assets/images/logo/1-white.png') }}" alt="logo">
+                </a>
+            </div>
+            <div class="toggle-sidebar">
+                <i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
+                <a href="#">
+                    <img src="{{ asset('admin/assets/images/logo/1.png') }}" class="img-fluid" alt="">
+                </a>
+            </div>
+        </div>
+
+        <!-- Search form -->
+        <form class="form-inline search-full" action="javascript:void(0)" method="get">
+            <!-- ... phần form search ... -->
+        </form>
+
+        <!-- Right header menu -->
+        <div class="nav-right col-6 pull-right right-header p-0">
+            <!-- ... phần menu notifications, dark mode, profile ... -->
         </div>
     </div>
-</nav> 
+</div>
