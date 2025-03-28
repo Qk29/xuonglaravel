@@ -14,20 +14,20 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            // CategorySeeder::class
-            // RoleSeeder::class
-            // UserSeeder::class
-            // PermissionSeeder::class
-            // RolePermissionSeeder::class
-            // UploadFileSeeder::class
-            // BrandSeeder::class
-            // ProductSeeder::class
-            // ProductCommentSeeder::class
-            // OrderSeeder::class
-            // OrderDetailSeeder::class
-            // CartSeeder::class
-            // CartDetailSeeder::class
-            // PostSeeder::class
+            CategorySeeder::class,
+            RoleSeeder::class,
+            UserSeeder::class,
+            PermissionSeeder::class,
+            RolePermissionSeeder::class,
+            UploadFileSeeder::class,
+            BrandSeeder::class,
+            ProductSeeder::class,
+            ProductCommentSeeder::class,
+            OrderSeeder::class,
+            OrderDetailSeeder::class,
+            CartSeeder::class,
+            CartDetailSeeder::class,
+            PostSeeder::class,
             PostCommentSeeder::class
         ]);
     }
