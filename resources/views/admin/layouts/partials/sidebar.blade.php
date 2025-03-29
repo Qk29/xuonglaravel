@@ -29,19 +29,19 @@
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a href="{{ route('users.index') }}" class="sidebar-link sidebar-title link-nav">
+                        <a href="{{ route('admin.users.index') }}" class="sidebar-link sidebar-title link-nav">
                             <i class="bi bi-people me-2"></i>
                             Quản lý người dùng
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a href="{{route('products.index')}}" class="sidebar-link sidebar-title link-nav">
+                        <a href="{{route('admin.products.index')}}" class="sidebar-link sidebar-title link-nav">
                             <i class="bi bi-box me-2"></i>
                             Quản lý sản phẩm
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a href="{{route('categories.index')}}" class="sidebar-link sidebar-title link-nav">
+                        <a href="{{route('admin.categories.index')}}" class="sidebar-link sidebar-title link-nav">
                             <i class="bi bi-grid me-2"></i>
                             Quản lý danh mục
                         </a>

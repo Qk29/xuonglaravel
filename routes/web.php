@@ -2,47 +2,41 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\UserController;
+
+
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ProductController;
+
+use App\Http\Controllers\AuthenticationController;
+
+Route::get('login',[AuthenticationController::class,'login'])->name('login');
+Route::post('post-login',[AuthenticationController::class,'postLogin'])->name('postLogin');
+
+
+
 Route::group(['prefix' => 'admin','as' => 'admin.'], function () {
-    Route::get('login', function () {
-        return view('admin.login-page.login');
-    })->name('login');
+    
+
+    /** Products */
+    Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
+        Route::get('/', [ProductController::class,'index'])->name('index');
+        
+    });
+
+    /** Categories */
+    Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
+        Route::get('/', [CategoryController::class,'index'])->name('index');
+        
+    });
+
+    /** Users */
+    Route::group(['prefix'=>'users','as'=>'users.'],function(){
+        Route::get('/',[UserController::class,'index'])->name('index');
+    });
+
+
 });
 
-Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
-    Route::get('/', [ProductController::class,'index'])->name('index');
-    
-    // Route::get('/create', function () {
-    //     return view('products.create');
-    // })->name('create');
-    
-    // Route::get('/{id}', function ($id) {
-    //     return view('products.show');
-    // })->name('show');
-    
-    // Route::get('/{id}/edit', function ($id) {
-    //     return view('products.edit');
-    // })->name('edit');
-});
 
-Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
-    Route::get('/', [CategoryController::class,'index'])->name('index');
-    
-    // Route::get('/create', function () {
-    //     return view('products.create');
-    // })->name('create');
-    
-    // Route::get('/{id}', function ($id) {
-    //     return view('products.show');
-    // })->name('show');
-    
-    // Route::get('/{id}/edit', function ($id) {
-    //     return view('products.edit');
-    // })->name('edit');
-});
 
-Route::group(['prefix'=>'users','as'=>'users.'],function(){
-    Route::get('/',[UserController::class,'index'])->name('index');
-});

@@ -51,27 +51,19 @@
         <div class="login-header">
             <h2>Đăng nhập</h2>
         </div>
-        <form method="POST" action="">
+        @if(session('message'))
+            <p class="text-danger"> {{session('message')}} </p>
+        
+        @endif
+        <form method="POST" action="{{route('postLogin')}}">
             @csrf
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" 
-                       id="email" name="email" value="" required autofocus>
-                {{-- @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror --}}
+                <input type="email" class="form-control" id="email" name="email" >
             </div>
             <div class="form-group">
-                <label for="password">Mật khẩu</label>
-                <input type="password" class="form-control " 
-                       id="password" name="password" required>
-                {{-- @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror --}}
+                <label for="password">Password</label>
+                <input type="password" class="form-control "  id="password" name="password" >
             </div>
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="remember" name="remember">
