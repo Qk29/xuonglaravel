@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Session;
+
 
 class AuthenticationController extends Controller
 {
@@ -20,14 +24,20 @@ class AuthenticationController extends Controller
         $remember = $req->has('remember');
 
         if(Auth::attempt($dataLogin,$remember)){
-            // đăng nhập thành công
 
+            // logout hết các tài khoản khác 
+            Session::where('user_id', Auth::id())->delete();
+            // Tạo phiên đăng nhập mới
+            session()->put('user_id',Auth::id());
+
+
+            // đăng nhập thành công
             if(Auth::user()->role == 1){
                 return redirect()->route('admin.products.index')->with([
                     'message'=>'Đăng nhập thành công'
                 ]);
             }else{
-                echo "Tài khoản không có quyền truy cập vào trang quản trị";
+                echo "Trang chủ của User";
             }
 
             
@@ -47,5 +57,29 @@ class AuthenticationController extends Controller
             'messageLogout' => 'Đăng xuất thành công',
             
         ]);
+    }
+
+    public function register(){
+        return view('admin.login-page.register');
+    }
+
+    public function postRegister(Request $req){
+        $check = User::where('email',$req->email)->exists();
+        if($check){
+            return redirect()->back()->with([
+                'message' => "Email đã tồn tại, vui lòng đổi email khác"
+            ]);
+        }else{
+            $data = [
+                'name' => $req->name,
+                'email' => $req->email,
+                'password' => Hash::make($req->password)
+            ];
+            $newUser = User::create($data);
+
+            return redirect()->route('login')->with([
+                'messageRegister' => 'Register successfully'
+            ]);
+        }
     }
 }

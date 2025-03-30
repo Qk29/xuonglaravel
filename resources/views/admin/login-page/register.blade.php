@@ -49,7 +49,7 @@
 <div class="container">
     <div class="login-container">
         <div class="login-header">
-            <h2>Đăng nhập</h2>
+            <h2>Register</h2>
         </div>
         @if(session('message'))
             <p class="text-danger"> {{session('message')}} </p>
@@ -58,32 +58,26 @@
         @if(session('messageLogout'))
             <p class="text-success"> {{session('messageLogout')}} </p>
         @endif
-
-        @if(session('messageRegister'))
-        <p class="text-success"> {{session('messageRegister')}} </p>
-        @endif
-        
-        <form method="POST" action="{{route('postLogin')}}">
+        <form method="POST" action="{{route('postRegister')}}">
             @csrf
-            <div class="form-group">
+            <div class="form-group mb-2">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" >
+            </div>
+            <div class="form-group mb-2">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" >
             </div>
-            <div class="form-group">
+            <div class="form-group mb-2">
                 <label for="password">Password</label>
                 <input type="password" class="form-control "  id="password" name="password" >
             </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="remember" name="remember">
-                <label class="form-check-label" for="remember">Remember me</label>
-            </div>
-            <button type="submit" class="btn btn-primary btn-login">Login</button>
+            
+            <button type="submit" class="btn btn-primary btn-login">Register</button>
             <div class="forgot-password">
-                <a href="{{route('register')}}">Register</a>
+                <a href="{{route('login')}}">Login</a>
             </div>
-            <div class="forgot-password">
-                <a href="#">Forgot password?</a>
-            </div>
+            
         </form>
     </div>
 </div>
