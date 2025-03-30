@@ -55,6 +55,9 @@
             <p class="text-danger"> {{session('message')}} </p>
         
         @endif
+        @if(session('messageLogout'))
+            <p class="text-success"> {{session('messageLogout')}} </p>
+        @endif
         <form method="POST" action="{{route('postLogin')}}">
             @csrf
             <div class="form-group">
@@ -67,11 +70,11 @@
             </div>
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="remember" name="remember">
-                <label class="form-check-label" for="remember">Ghi nhớ đăng nhập</label>
+                <label class="form-check-label" for="remember">Remember me</label>
             </div>
-            <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
+            <button type="submit" class="btn btn-primary btn-login">Login</button>
             <div class="forgot-password">
-                <a href="#">Quên mật khẩu?</a>
+                <a href="#">Forgot password?</a>
             </div>
         </form>
     </div>

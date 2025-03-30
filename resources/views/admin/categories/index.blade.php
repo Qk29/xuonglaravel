@@ -14,7 +14,7 @@
 
 
 @section('content')
-<h2>Trang danh sách danh mục</h2>
+<h2 class="mb-2">Trang danh sách danh mục</h2>
 
 <div class="row">
     <div class="col-sm-12">

@@ -17,9 +17,20 @@ class AuthenticationController extends Controller
             'email' => $req->email,
             'password' => $req->password,
         ];
+        $remember = $req->has('remember');
 
-        if(Auth::attempt($dataLogin)){
+        if(Auth::attempt($dataLogin,$remember)){
+            // đăng nhập thành công
 
+            if(Auth::user()->role == 1){
+                return redirect()->route('admin.products.index')->with([
+                    'message'=>'Đăng nhập thành công'
+                ]);
+            }else{
+                echo "Tài khoản không có quyền truy cập vào trang quản trị";
+            }
+
+            
         }else{
 
             // Đăng nhập thất bại
@@ -29,5 +40,12 @@ class AuthenticationController extends Controller
             ]);
             
         }
+    }
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with([
+            'messageLogout' => 'Đăng xuất thành công',
+            
+        ]);
     }
 }
