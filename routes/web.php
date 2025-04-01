@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductController;
 
 use App\Http\Controllers\AuthenticationController;
 
+
 Route::get('login',[AuthenticationController::class,'login'])->name('login');
 Route::post('post-login',[AuthenticationController::class,'postLogin'])->name('postLogin');
 Route::get('logout',[AuthenticationController::class,'logout'])->name('logout');
@@ -22,6 +23,10 @@ Route::group(
     ['prefix' => 'admin','as' => 'admin.', 'middleware' => 'role'], 
     function () {
     
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+   
 
     /** Products */
     Route::group(['prefix' => 'products', 'as' => 'products.'], function () {

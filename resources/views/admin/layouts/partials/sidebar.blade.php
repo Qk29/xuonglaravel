@@ -23,7 +23,7 @@
                 <ul class="sidebar-links" id="simple-bar">
                     <!-- Menu items -->
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin.dashboard')}}">
                             <i class="ri-home-line"></i>
                             <span>Dashboard</span>
                         </a>
