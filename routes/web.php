@@ -10,6 +10,12 @@ use App\Http\Controllers\Admin\ProductController;
 
 use App\Http\Controllers\AuthenticationController;
 
+use App\Models\Product;
+
+Route::get('/test-product', function () {
+    return Product::latest()->first();
+});
+
 
 Route::get('login',[AuthenticationController::class,'login'])->name('login');
 Route::post('post-login',[AuthenticationController::class,'postLogin'])->name('postLogin');
@@ -31,7 +37,12 @@ Route::group(
     /** Products */
     Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
         Route::get('/', [ProductController::class,'index'])->name('index');
-        
+        Route::get('product-add',[ProductController::class,'addProduct'])->name('addProduct');
+        Route::post('postAddProduct',[ProductController::class,'handleAddProduct'])->name('handleAddProduct');
+        Route::get('editProduct/{id}',[ProductController::class,'editProduct'])->name('editProduct');
+        Route::put('postUpdateProduct/{id}',[ProductController::class,'postUpdateProduct'])->name('postUpdateProduct');
+        Route::delete('deleteProduct/{id}',[ProductController::class,'deleteProduct'])->name('deleteProduct');
+
     });
 
     /** Categories */
