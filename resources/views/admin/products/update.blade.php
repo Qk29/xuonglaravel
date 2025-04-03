@@ -50,8 +50,8 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="image" class="form-label">Ảnh sản phẩm</label>
-            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+            <label for="image_url" class="form-label">Ảnh sản phẩm</label>
+            <input type="file" class="form-control" id="image_url" name="image_url" >
             @if($product->image_url)
                 <img src="{{ asset('storage/' . $product->image_url) }}" width="100" alt="Ảnh sản phẩm">
             @endif
