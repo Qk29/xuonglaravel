@@ -11,9 +11,25 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AuthenticationController;
 
 use App\Models\Product;
+use App\Models\User;
+use App\Models\Cart;
 
-Route::get('/test-product', function () {
-    return Product::latest()->first();
+
+Route::get('test-product', function () {
+
+    $users = User::with(['cart'])->get();
+    foreach ($users as $user){
+        echo $user->name . '<br>';
+        echo $user->email . '<br>';
+
+        if($user->cart && $user->cart->cartDetails){
+            foreach($user->cart->cartDetails as $cartDetail){
+                echo 'Product Id:' . $cartDetail->product_id . '<br>';
+                echo 'quantity' . $cartDetail->quantity . '<br>';
+            }
+        }
+    }
+
 });
 
 
