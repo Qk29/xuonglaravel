@@ -24,12 +24,12 @@
         @method('PUT')
         <div class="mb-3">
             <label for="name" class="form-label">Tên sản phẩm</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}"  required>
+            <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}"  >
         </div>
         
         <div class="mb-3">
             <label for="price" class="form-label">Giá</label>
-            <input type="number" class="form-control" id="price" name="price"  value="{{ $product->price }}" required>
+            <input type="number" class="form-control" id="price" name="price"  value="{{ $product->price }}" >
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Danh mục</label>
@@ -62,13 +62,13 @@
         </div>
         <div class="mb-3">
             <label for="stock" class="form-label">Số lượng tồn kho</label>
-            <input type="number" class="form-control" id="stock" name="stock" value="{{ $product->stock }}" required>
+            <input oninput="updateStatus()" type="number" class="form-control" id="stock" name="stock" value="{{ $product->stock }}" >
         </div>
         <div class="mb-3">
             <label for="status" class="form-label">Trạng thái</label>
             <select class="form-control" id="status" name="status">
-                <option value="active" {{ $product->status == 'active' ? 'selected' : '' }}>Còn hàng</option>
-        <option value="inactive" {{ $product->status == 'inactive' ? 'selected' : '' }}>Hết hàng</option>
+                <option value="1" {{ $product->status == '1' ? 'selected' : '' }}>Còn hàng</option>
+        <option value="0" {{ $product->status == '0' ? 'selected' : '' }}>Hết hàng</option>
             </select>
         </div>
         <div class="mb-3">
@@ -80,4 +80,15 @@
 @endsection
 
 @push('scripts')
+<script>    
+    function updateStatus() {
+        var stock = document.getElementById('stock').value;
+        var status = document.getElementById('status');
+        if (stock > 0) {
+            status.value = '1'; // Còn hàng
+        } else {
+            status.value = '0'; // Hết hàng
+        }
+    }
+</script>
 @endpush

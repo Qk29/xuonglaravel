@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 
+
+
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProductController;
@@ -64,7 +66,11 @@ Route::group(
     /** Categories */
     Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
         Route::get('/', [CategoryController::class,'index'])->name('index');
-        
+        Route::get('add', [CategoryController::class,'addCategory'])->name('addCategory');
+        Route::post('postAddCategory', [CategoryController::class,'handleAddCategory'])->name('handleAddCategory');
+        Route::get('edit/{id}', [CategoryController::class,'editCategory'])->name('editCategory');
+        Route::put('postUpdateCategory/{id}', [CategoryController::class,'postUpdateCategory'])->name('postUpdateCategory');
+        Route::delete('deleteCategory/{id}', [CategoryController::class,'deleteCategory'])->name('deleteCategory');
     });
 
     /** Users */

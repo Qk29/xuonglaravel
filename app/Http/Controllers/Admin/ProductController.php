@@ -14,6 +14,39 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function messages()
+    {
+        return [
+            'name.required' => 'Tên sản phẩm là bắt buộc',
+            'name.string' => 'Tên sản phẩm phải là chuỗi',
+            'name.max' => 'Tên sản phẩm không được vượt quá 255 ký tự',
+            'name.unique' => 'Tên sản phẩm đã tồn tại',
+            'price.required' => 'Giá là bắt buộc',
+            'price.numeric' => 'Giá phải là số',
+            'price.min' => 'Giá không được nhỏ hơn 0',
+            'stock.required' => 'Số lượng tồn kho là bắt buộc',
+            'stock.integer' => 'Số lượng tồn kho phải là số nguyên',
+            'stock.min' => 'Số lượng tồn kho không được nhỏ hơn 0',
+            'status.required' => 'Trạng thái là bắt buộc',
+            'status.in' => 'Trạng thái không hợp lệ',
+            'category.required' => 'Danh mục là bắt buộc',
+            'category.exists' => 'Danh mục không tồn tại',
+            'brand_id.required' => 'Thương hiệu là bắt buộc',
+            'brand_id.exists' => 'Thương hiệu không tồn tại',
+            'discount.required' => 'Giảm giá là bắt buộc',
+            'discount.numeric' => 'Giảm giá phải là số',
+            'discount.min' => 'Giảm giá không được nhỏ hơn 0',
+            'discount.max' => 'Giảm giá không được lớn hơn 100',
+            'image_url.required' => 'Ảnh sản phẩm là bắt buộc',
+            'image_url.image' => 'File phải là ảnh',
+            'image_url.mimes' => 'Ảnh phải có định dạng: jpeg, png, jpg, gif',
+            'image_url.max' => 'Kích thước ảnh không được vượt quá 2MB',
+            'description.required' => 'Mô tả là bắt buộc',
+            'description.string' => 'Mô tả phải là chuỗi',
+            'description.max' => 'Mô tả không được vượt quá 2000 ký tự',
+        ];
+    }
+
     public function index()
     {
         $listProduct = Product::paginate(10);
@@ -29,6 +62,19 @@ class ProductController extends Controller
 
     public function handleAddProduct(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:255|unique:products,name',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'status' => 'required|in:0,1',
+            'category' => 'required|exists:categories,id',
+            'brand_id' => 'required|exists:brands,id',
+            'discount' => 'required|numeric|min:0|max:100',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string|max:2000',
+        ], $this->messages());
+        
+
         $imagePath = null;
         if ($request->hasFile('image_url')) {
             try {
@@ -81,6 +127,17 @@ class ProductController extends Controller
 
     public function postUpdateProduct(Request $request, $id)
     {
+        $request->validate([
+            'name' => "required|string|max:255|unique:products,name,$id",
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'status' => 'required|in:1,0',
+            'category' => 'required|exists:categories,id',
+            'brand_id' => 'required|exists:brands,id',
+            'discount' => 'required|numeric|min:0|max:100',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string|max:2000',
+        ], $this->messages());
         $product = Product::findOrFail($id);
         $imagePath = $product->image_url; // Giữ nguyên đường dẫn ảnh cũ
 

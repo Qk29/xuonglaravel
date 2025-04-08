@@ -65,7 +65,7 @@
                                             <td>{{ number_format($product->price, 0, ',', '.') }} VNĐ</td>
                                             <td>{{ $product->discount }} %</td>
                                             <td>{{ $product->stock }}</td>
-                                            <td>{{ $product->status }}</td>
+                                            <td>{{ $product->status > 0 ? 'Còn hàng' : 'Hết hàng' }}</td>
                                             <td>
                                                 <ul>
                                                     <li>
