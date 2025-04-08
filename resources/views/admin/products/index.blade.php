@@ -24,6 +24,15 @@
                 <div class="card-body">
                     <div class="title-header option-title d-sm-flex d-block">
                         <h5>Products List</h5>
+                        <form method="GET" action="{{route('admin.products.index')}}" class="mb-3">
+                            <label for="perPage">Hiển thị:</label>
+                            <select name="perPage" id="perPage" onchange="this.form.submit()">
+                                <option value="5" {{ request('perPage') == 5 ? 'selected' : '' }}>5</option>
+                                <option value="10" {{ request('perPage') == 10 ? 'selected' : '' }}>10</option>
+                                <option value="15" {{ request('perPage') == 15 ? 'selected' : '' }}>15</option>
+                                <option value="all" {{ request('perPage') === 'all' ? 'selected' : '' }}>Tất cả</option>
+                            </select>
+                        </form>
                         <div class="right-options">
                             <ul>
                                 <li>
@@ -113,7 +122,9 @@
             </div>
         </div>
 
-        {{ $listProduct->links('pagination::bootstrap-5')}}
+        @if (!$isAll)
+        {{ $listProduct->links('pagination::bootstrap-5') }}
+        @endif
 
     </div>
 @endsection

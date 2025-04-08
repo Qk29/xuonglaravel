@@ -47,10 +47,18 @@ class ProductController extends Controller
         ];
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $listProduct = Product::paginate(10);
-        return view('admin.products.index', compact('listProduct'));
+        $perPage = $request->input('perPage', 10);
+        $isAll = false;
+        if ($perPage == 'all') {
+            $listProduct = Product::all();
+            $isAll = true;
+        } else {
+            $perPage = (int) $perPage > 0 ? (int) $perPage : 10;
+            $listProduct = Product::with(['brand', 'category'])->paginate($perPage)->withQueryString();
+        }
+        return view('admin.products.index', compact('listProduct','perPage','isAll'));
     }
 
     public function addProduct()
