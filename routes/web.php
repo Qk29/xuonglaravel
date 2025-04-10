@@ -76,6 +76,9 @@ Route::group(
     /** Users */
     Route::group(['prefix'=>'users','as'=>'users.'],function(){
         Route::get('/',[UserController::class,'index'])->name('index');
+        Route::get('edit/{id}',[UserController::class,'editUser'])->name('editUser');
+        Route::put('postUpdateUser/{id}',[UserController::class,'postUpdateUser'])->name('postUpdateUser');
+        Route::delete('deleteUser/{id}',[UserController::class,'deleteUser'])->name('deleteUser');
     });
 
 
