@@ -36,8 +36,12 @@ class AuthenticationController extends Controller
                 return redirect()->route('admin.products.index')->with([
                     'message'=>'Đăng nhập thành công'
                 ]);
-            }else{
-                echo "Trang chủ của User";
+            }elseif(Auth::user()->role == 2){
+                $user = Auth::user();
+                return redirect()->route('client.home')->with([
+                    'message'=>'Đăng nhập thành công',
+                    'user' => $user,
+                ]);
             }
 
             

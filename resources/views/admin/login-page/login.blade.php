@@ -79,7 +79,7 @@
             </div>
             <button type="submit" class="btn btn-primary btn-login">Login</button>
             <div class="forgot-password">
-                <a href="{{route('register')}}">Register</a>
+                <a href="{{route('register')}}">Bạn chưa có tài khoản ?</a>
             </div>
             <div class="forgot-password">
                 <a href="#">Forgot password?</a>
