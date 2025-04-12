@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
+
 use App\Models\Product;
+use Illuminate\Validation\ValidationException;
 
 class ProductController extends Controller
 {
@@ -30,7 +32,23 @@ class ProductController extends Controller
 
     public function add(Request $request){
         // validate
-
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'price' => 'required|numeric|min:0',
+                'discount' => 'nullable|numeric|min:0|max:100',
+                'stock' => 'required|integer|min:0',
+                'category_id' => 'required|exists:categories,id',
+                'brand_id' => 'nullable|exists:brands,id',
+                'status' => 'required|in:active,inactive',
+                'image_url' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'errors' => $e->errors(),
+            ],422);
+        }
         
         $imagePath = null;
         $image = $request->file('image_url');
@@ -69,8 +87,28 @@ class ProductController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'Product not found',
-            ], 404);
+            ], 403);
         }
+        
+
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'price' => 'required|numeric|min:0',
+                'discount' => 'nullable|numeric|min:0|max:100',
+                'stock' => 'required|integer|min:0',
+                'category_id' => 'required|exists:categories,id',
+                'brand_id' => 'nullable|exists:brands,id',
+                'status' => 'required|in:active,inactive',
+                'image_url' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'errors' => $e->errors(),
+            ],422);
+        }
+        
 
         // giữ lại đường dẫn ảnh cũ nếu có
         $imagePath = $product->image_url;
@@ -126,7 +164,7 @@ class ProductController extends Controller
             ], 404);
         }
 
-        $product->delete(); // <-- Laravel sẽ soft delete ở đây
+        $product->delete(); // <-- soft delete 
 
         return response()->json([
             'status' => 'success',
