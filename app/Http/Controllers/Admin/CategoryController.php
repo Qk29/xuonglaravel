@@ -97,6 +97,8 @@ class CategoryController extends Controller
                 return redirect()->back()->with('error', 'Không thể xóa danh mục này vì nó có danh mục con!');
             }
 
+            $category->products()->delete();
+            
             $category->delete();
             return redirect()->route('admin.categories.index')->with('message', 'Danh mục đã được xóa.');
         } catch (\Exception $e) {

@@ -20,6 +20,9 @@ use App\Models\Cart;
 
 
 Route::get('/', [ClientHomeController::class, 'index'])->name('client.home');
+Route::get('product-detail/{id}', [ClientHomeController::class, 'productDetail'])->name('client.productDetail');
+Route::get('/search', [ClientHomeController::class, 'search'])->name('client.search');
+
 
 
 Route::get('login',[AuthenticationController::class,'login'])->name('login');

@@ -10,7 +10,11 @@
         <meta name="keywords" content="Fastkart">
         <meta name="author" content="Fastkart">
         <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
-        <title>On-demand last-mile delivery</title>
+        <title>Shop Computer</title>
+
+        <!-- Bootstrap 5 CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     
         <!-- Google font -->
         <link rel="preconnect" href="https://fonts.gstatic.com/">

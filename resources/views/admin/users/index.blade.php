@@ -13,6 +13,21 @@
 
 @section('content')
     <h2 class="mb-2">Trang danh sách người dùng</h2>
+    {{-- thông báo không được xoá admin --}}
+    @if (session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    @if (session('message'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>  
+        
+    @endif
     <div class="row">
         <div class="col-sm-12">
             <div class="card card-table">
@@ -23,8 +38,9 @@
                         <table class="table all-package theme-table" id="table_id">
                             <thead>
                                 <tr>
-                                    <th>User</th>
+                                    <th>Avatar</th>
                                     <th>Name</th>
+                                    <th>Role</th>
                                     <th>Phone</th>
                                     <th>Email</th>
                                     <th>Status</th>
@@ -38,7 +54,7 @@
                                     <td>
                                         <div class="table-image">
                                             @if($user->avatar)
-                                                <img src="{{ asset('storage/' . $user->avatar) }}" class="img-fluid" alt="{{ $user->name }}">
+                                                <img src="{{ asset('storage/' . $user->image_url) }}" class="img-fluid" alt="{{ $user->name }}">
                                             @else
                                                 <img src="{{ asset('assets/images/users/default.jpg') }}" class="img-fluid" alt="{{ $user->name }}">
                                             @endif
@@ -52,14 +68,22 @@
                                         </div>
                                     </td>
 
+                                    <td>
+                                        @if($user->role == 1)
+                                            <span class="badge bg-primary">Admin</span>
+                                        @elseif ($user->role == 2)
+                                            <span class="badge bg-success">User</span>
+                                        @endif
+                                    </td>
+
                                     <td>{{ $user->phone }}</td>
 
                                     <td>{{ $user->email }}</td>
 
                                     <td>
-                                        @if($user->status == 1)
+                                        @if($user->status === 'active')
                                             <span class="badge bg-success">Active</span>
-                                        @else
+                                        @elseif ($user->status === 'inactive')
                                             <span class="badge bg-danger">Inactive</span>
                                         @endif
                                     </td>

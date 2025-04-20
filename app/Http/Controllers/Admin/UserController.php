@@ -128,6 +128,10 @@ class UserController extends Controller
     public function deleteUser($id)
     {
         $user = User::findOrFail($id);
+
+        if ($user->role === '1') {
+            return redirect()->back()->with('error', 'Không thể xoá tài khoản admin.');
+        }
         if ($user->avatar) {
             $imagePath = public_path('storage/' . $user->avatar);
             if (file_exists($imagePath)) {
