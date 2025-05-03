@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Session;
+use App\Http\Controllers\Controller;
 
 
 class AuthenticationController extends Controller
@@ -57,7 +58,7 @@ class AuthenticationController extends Controller
     }
     public function logout(){
         Auth::logout();
-        return redirect()->route('login')->with([
+        return redirect()->route('client.home')->with([
             'messageLogout' => 'Đăng xuất thành công',
             
         ]);
