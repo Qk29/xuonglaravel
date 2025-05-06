@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProductController;
 
 use App\Http\Controllers\Client\ClientHomeController;
+use App\Http\Controllers\Client\CartController;
 
 use App\Http\Controllers\Auth\AuthenticationController;
 
@@ -18,6 +19,25 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
 
+
+
+// client 
+Route::get('/', [ClientHomeController::class, 'index'])->name('client.home');
+Route::get('product-detail/{id}', [ClientHomeController::class, 'productDetail'])->name('client.productDetail');
+Route::get('/search', [ClientHomeController::class, 'search'])->name('client.search');
+
+// cart
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
+
+
+// Authentication
+Route::get('login',[AuthenticationController::class,'login'])->name('login');
+Route::post('post-login',[AuthenticationController::class,'postLogin'])->name('postLogin');
+Route::get('logout',[AuthenticationController::class,'logout'])->name('logout');
+Route::get('register',[AuthenticationController::class,'register'])->name('register');
+
+Route::post('postRegister',[AuthenticationController::class,'postRegister'])->name('postRegister');
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
@@ -25,20 +45,8 @@ Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showRese
 Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 
-Route::get('/', [ClientHomeController::class, 'index'])->name('client.home');
-Route::get('product-detail/{id}', [ClientHomeController::class, 'productDetail'])->name('client.productDetail');
-Route::get('/search', [ClientHomeController::class, 'search'])->name('client.search');
 
-
-
-Route::get('login',[AuthenticationController::class,'login'])->name('login');
-Route::post('post-login',[AuthenticationController::class,'postLogin'])->name('postLogin');
-Route::get('logout',[AuthenticationController::class,'logout'])->name('logout');
-Route::get('register',[AuthenticationController::class,'register'])->name('register');
-Route::post('postRegister',[AuthenticationController::class,'postRegister'])->name('postRegister');
-
-
-
+//admin
 Route::group(
     ['prefix' => 'admin','as' => 'admin.', 'middleware' => 'role'], 
     function () {

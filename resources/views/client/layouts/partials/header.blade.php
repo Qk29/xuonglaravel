@@ -43,10 +43,15 @@
           @endif
           
           <li class="nav-item">
-            <a class="nav-link position-relative" href="#">
+            <a class="nav-link position-relative" href="{{route('cart.index')}}">
               <i class="bi bi-cart3 fs-5"></i>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                3
+                @if(isset($cart) && $cart->cartDetails->count())
+                    {{ $cart->cartDetails->sum('quantity') }}
+                @else
+                    0
+                @endif
+                <span class="visually-hidden">unread messages</span>
               </span>
             </a>
           </li>

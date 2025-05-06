@@ -1,64 +1,64 @@
 <footer class="section-t-space">
     <div class="container-fluid-lg">
-        
-
         <div class="main-footer section-b-space section-t-space">
             <div class="row g-md-4 g-3">
+                <!-- Logo và Thông tin cửa hàng -->
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="footer-logo">
                         <div class="theme-logo">
                             <a href="index.html">
-                                <img src="../assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                <img src="../assets/logo.png" class="blur-up lazyload" alt="Shop Computer Logo">
                             </a>
                         </div>
 
                         <div class="footer-logo-contain">
-                            <p>We are a friendly bar serving a variety of cocktails, wines and beers. Our bar is a
-                                perfect place for a couple.</p>
+                            <p>We offer a wide range of computers, laptops, components, and accessories. Our goal is to provide top-quality products with excellent customer service.</p>
 
                             <ul class="address">
                                 <li>
                                     <i data-feather="home"></i>
-                                    <a href="javascript:void(0)">1418 Riverwood Drive, CA 96052, US</a>
+                                    <a href="javascript:void(0)">123 Tech Street, Silicon Valley, CA 94043, US</a>
                                 </li>
                                 <li>
                                     <i data-feather="mail"></i>
-                                    <a href="javascript:void(0)">support@fastkart.com</a>
+                                    <a href="javascript:void(0)">support@shopcomputer.com</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
+                <!-- Danh mục sản phẩm -->
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                     <div class="footer-title">
-                        <h4>Categories</h4>
+                        <h4>Product Categories</h4>
                     </div>
 
                     <div class="footer-contain">
                         <ul>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Vegetables & Fruit</a>
+                                <a href="laptops.html" class="text-content">Laptops</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Beverages</a>
+                                <a href="desktops.html" class="text-content">Desktops</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Meats & Seafood</a>
+                                <a href="components.html" class="text-content">Components</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Frozen Foods</a>
+                                <a href="accessories.html" class="text-content">Accessories</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Biscuits & Snacks</a>
+                                <a href="gaming.html" class="text-content">Gaming PCs</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Grocery & Staples</a>
+                                <a href="software.html" class="text-content">Software</a>
                             </li>
                         </ul>
                     </div>
                 </div>
 
+                <!-- Liên kết hữu ích -->
                 <div class="col-xl col-lg-2 col-sm-3">
                     <div class="footer-title">
                         <h4>Useful Links</h4>
@@ -70,13 +70,13 @@
                                 <a href="index.html" class="text-content">Home</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Shop</a>
+                                <a href="shop.html" class="text-content">Shop</a>
                             </li>
                             <li>
                                 <a href="about-us.html" class="text-content">About Us</a>
                             </li>
                             <li>
-                                <a href="blog-list.html" class="text-content">Blog</a>
+                                <a href="blog.html" class="text-content">Blog</a>
                             </li>
                             <li>
                                 <a href="contact-us.html" class="text-content">Contact Us</a>
@@ -85,6 +85,7 @@
                     </div>
                 </div>
 
+                <!-- Trung tâm trợ giúp -->
                 <div class="col-xl-2 col-sm-3">
                     <div class="footer-title">
                         <h4>Help Center</h4>
@@ -114,6 +115,7 @@
                     </div>
                 </div>
 
+                <!-- Liên hệ với chúng tôi -->
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="footer-title">
                         <h4>Contact Us</h4>
@@ -126,7 +128,7 @@
                                     <i data-feather="phone"></i>
                                     <div class="contact-number">
                                         <h6 class="text-content">Hotline 24/7 :</h6>
-                                        <h5>+91 888 104 2340</h5>
+                                        <h5>+1 800 123 4567</h5>
                                     </div>
                                 </div>
                             </li>
@@ -136,24 +138,24 @@
                                     <i data-feather="mail"></i>
                                     <div class="contact-number">
                                         <h6 class="text-content">Email Address :</h6>
-                                        <h5>fastkart@hotmail.com</h5>
+                                        <h5>support@shopcomputer.com</h5>
                                     </div>
                                 </div>
                             </li>
 
                             <li class="social-app mb-0">
-                                <h5 class="mb-2 text-content">Download App :</h5>
+                                <h5 class="mb-2 text-content">Download Our App :</h5>
                                 <ul>
                                     <li class="mb-0">
                                         <a href="https://play.google.com/store/apps" target="_blank">
                                             <img src="https://themes.pixelstrap.com/fastkart/assets/images/playstore.svg" class="blur-up lazyload"
-                                                alt="">
+                                                alt="Play Store">
                                         </a>
                                     </li>
                                     <li class="mb-0">
                                         <a href="https://www.apple.com/in/app-store/" target="_blank">
                                             <img src="https://themes.pixelstrap.com/fastkart/assets/images/appstore.svg" class="blur-up lazyload"
-                                                alt="">
+                                                alt="App Store">
                                         </a>
                                     </li>
                                 </ul>
@@ -164,40 +166,6 @@
             </div>
         </div>
 
-        <div class="sub-footer section-small-space">
-            <div class="reserve">
-                <h6 class="text-content">©2022 Fastkart All rights reserved</h6>
-            </div>
-
-            <div class="payment">
-                <img src="../assets/images/payment/1.png" class="blur-up lazyload" alt="">
-            </div>
-
-            <div class="social-link">
-                <h6 class="text-content">Stay connected :</h6>
-                <ul>
-                    <li>
-                        <a href="https://www.facebook.com/" target="_blank">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/" target="_blank">
-                            <i class="fa-brands fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/" target="_blank">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://in.pinterest.com/" target="_blank">
-                            <i class="fa-brands fa-pinterest-p"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        
     </div>
 </footer>

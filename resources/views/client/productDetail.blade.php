@@ -23,21 +23,22 @@
             </p>
 
             <ul class="list-group list-group-flush mb-4">
-                <li class="list-group-item"><strong>Loại:</strong> Sản phẩm đẳng cấp nhất thế giới</li>
-                <li class="list-group-item"><strong>Kích thước:</strong> Size S</li>
-                <li class="list-group-item"><strong>Bảo hành:</strong> 10 năm</li>
+                <li class="list-group-item"><strong>Thương hiệu:</strong> {{$product->brand->name}}</li>
+                <li class="list-group-item"><strong>discount giảm giá:</strong> {{$product->discount. '%'}}</li>
+                <li class="list-group-item"><strong>Số lượng còn:</strong> {{$product->stock}}</li>
                 <li class="list-group-item"><strong>Tình trạng:</strong> {{$product->status == 'active' ? 'Còn Hàng' : 'Hết Hàng'}}</li>
             </ul>
 
             <div class="d-flex gap-3 mb-3">
-                <input type="number" name="quantity" value="1" min="1" class="form-control w-25" placeholder="Số lượng">
-                <form action="" method="POST" class="flex-grow-1">
+                
+                <form action="{{route('add.to.cart', $product->id)}}" method="POST" class="flex-grow-1">
                     @csrf
-                    <button type="submit" class="btn btn-primary btn-lg w-100">🛒 Mua ngay</button>
+                    <input type="number" name="quantity" value="1" min="1" class="form-control w-25" placeholder="Số lượng">
+                    <button type="submit" class="btn btn-primary mt-3 btn-lg w-50">🛒 Thêm vào giỏ hàng</button>
                 </form>
             </div>
 
-            <a href="{{ route('client.home') }}" class="btn btn-outline-secondary w-100">← Quay về trang chủ</a>
+            <a href="{{ route('client.home') }}" class="btn btn-outline-secondary w-50">← Quay về trang chủ</a>
         </div>
     </div>
 
